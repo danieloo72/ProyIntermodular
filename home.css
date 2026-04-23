@@ -1,0 +1,228 @@
+body { 
+    text-align: center;
+    margin: 0;
+    background-color: #f5f5f5;
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+/* Layout principal */
+.grid-layout {
+    display: grid;
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    grid-area: header;
+    background-color: rgb(15, 23, 42);
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 2px solid white;
+}
+
+/* Contenido principal */
+.main-content {
+    grid-area: main;
+    padding: 20px;
+    background-color: #e5e7eb;
+}
+
+/* Título */
+h1 {
+    font-size: 50px;
+    color: whitesmoke;
+    margin: 10px 0;
+}
+
+/* Contenedor de tarjetas */
+.contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px 75px;
+    padding: 20px;
+}
+
+/* Links o elementos superiores */
+#ventaCoche, #login {
+    display: inline-block;
+    margin-right: 30px;
+    color: #db9c37;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#ventaCoche {
+    margin-right: 400px;
+}
+
+Img {
+    width:100%;
+    height: 55%;
+    border-radius:5px;
+}
+
+#modalImagen {
+    width: 100%;
+    height: auto; /* Ajuste automático de altura */
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Botones */
+button {
+    background-color: rgb(29, 78, 216);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 25px;
+}
+
+button:hover {
+    background-color: rgb(37, 99, 235);
+    transform: scale(1.05);
+}
+
+.barra-superior {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.centro {
+    display: flex;
+    gap: 10px;
+    margin: 0 auto;
+    margin-left: 700px;
+}
+
+#favoritos {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+#buscar {
+    height: 25px;
+    width: 200px;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Footer */
+footer {
+    grid-area: footer;
+    background-color: #111827;
+    color: whitesmoke;
+    padding: 50px;
+}
+
+/* Tarjetas */
+.tarjeta {
+    background-color: #111827;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: whitesmoke;
+    width: 350px;
+    height: 400px;
+    padding: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.tarjeta:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Ajustes para el Modal */
+#modalCoche {
+    width: 800px;
+    max-width: 90vw;
+    border: none;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Contenedor principal del modal (Flexbox) */
+.modal-contenedor {
+    display: flex;
+    gap: 30px;
+    align-items: stretch; /* Para que ambas columnas tengan la misma altura */
+}
+
+/* Columna Izquierda */
+.modal-col-izquierda {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#btnComprar {
+    margin-top: 20px;
+    background-color: #10b981; /* Verde para comprar */
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+}
+
+/* Columna Derecha */
+.modal-col-derecha {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Información alineada a la izquierda */
+}
+
+.info-detallada {
+    flex-grow: 1; /* Empuja el botón de cerrar hacia el fondo */
+}
+
+.info-detallada p {
+    margin: 8px 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 4px;
+}
+
+/* Botón Cerrar */
+#cerrarModal {
+    padding: 0 25px;
+    background-color: #ef4444; /* Rojo para cerrar */
+    height: 35px; /* Fijamos una altura estándar */
+}
+
+/* Contenedor de botones en el modal */
+.modal-botones-pie {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; /* Asegura que ambos botones estén a la misma altura vertical */
+    gap: 15px;
+    margin-top: auto; /* Empuja los botones al fondo si sobra espacio */
+    padding-top: 15px;
+}
+
+/* Botón Favoritos interno */
+#btnFavoritoModal {
+    background-color: #f59e0b; /* Color naranja/ámbar */
+    padding: 0 15px;
+    height: 35px; /* Fijamos la misma altura que el botón cerrar */
+}
+
+#btnFavoritoModal.es-favorito {
+    background-color: #d97706;
+}
+
+/* Botón de favoritos de la barra superior */
+#favoritos {
+    background-color: #7c3aed; /* Color púrpura */
+}

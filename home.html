@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <script src="home.js" defer></script>
+    <title>Nombre</title>
+</head>
+<body>
+
+    <div class="grid-layout">
+        <header><h1>Nombre</h1>
+        <h3 id="ventaCoche">Vende tu Coche</h3>
+        <h3 id="login">Iniciar Sesión</h3>
+        </header>
+    
+    <main id="resultados" class="main-content">
+
+    <div class="barra-superior">
+
+        <div class="centro">
+
+            <input type="text" id="buscar" placeholder="Busca tu Coche ideal..."/>
+
+            <button id="resetear" type="reset">Borrar</button>
+
+            <button id="filtros">Busqueda Avanzada</button>
+
+            <div class="contenedor-filtro">
+                <dialog id="modalFiltro">
+                    <h2 id="modalBusqAvan"></h2>
+                    <p><strong>Año:</strong> <span id="modalFAnio"></span></p>
+                    <p><strong>Precio:</strong> <span id="modalFPrecio"></span></p>
+                    <p><strong>Marca:</strong> <span id="modalFMarca"></span></p>
+                    <p><strong>Modelo:</strong> <span id="modalFModelo"></span></p>
+                    <p><strong>Color:</strong> <span id="modalFColor"></span></p>
+                    <p><strong>Combustible:</strong> <span id="modalFCombustible"></span></p>
+                    <p><strong>Transmisión:</strong> <span id="modalFTransmision"></span></p>
+                    <p><strong>Kilometraje:</strong> <span id="modalFKM"></span></p>
+                    <p><strong>Ciudad:</strong> <span id="modalFCiudad"></span></p>
+                    <p><strong>Etiqueta Ambiental:</strong> <span id="modalFEtiqAmb"></span></p>
+                    <p><strong>Version:</strong> <span id="modalFVersion"></span></p>
+                    <p><strong>Categoría:</strong> <span id="modalFCategoria"></span></p>
+                </dialog>
+            </div>
+        </div>
+
+        <button id="favoritos">Favoritos</button>
+
+    </div>
+
+    <div class="contenedor"></div>
+
+        <dialog id="modalCoche">
+            <div class="modal-contenedor">
+                <div class="modal-col-izquierda">
+                    <img id="modalImagen" src="" alt="Coche">
+                    <button id="btnComprar">Comprar</button>
+                </div>
+
+                <div class="modal-col-derecha">
+                    <h2 id="modalTitulo"></h2>
+                    <div class="info-detallada">
+                        <p><strong>Año:</strong> <span id="modalAnio"></span></p>
+                        <p><strong>Precio:</strong> <span id="modalPrecio"></span></p>
+                        <p><strong>Color:</strong> <span id="modalColor"></span></p>
+                        <p><strong>Carburante:</strong> <span id="modalCarburante"></span></p>
+                        <p><strong>Transmisión:</strong> <span id="modalTransmision"></span></p>
+                        <p><strong>Kilometraje:</strong> <span id="modalKM"></span></p>
+                        <p><strong>Ciudad:</strong> <span id="modalCiudad"></span></p>
+                        <p id="modalDescripcion"></p>
+                    </div>
+                    <div class="modal-botones-pie">
+                    <button id="btnFavoritoModal">Añadir a Favoritos</button>
+                    <button id="cerrarModal">Cerrar</button>
+                    </div>    
+                    
+                </div>
+            </div>
+        </dialog>
+
+        </main>
+
+        <footer>© 2026 Proyecto Intermodular. Todos los derechos reservados.</footer>    
+
+    </div>
+
+</body>
+
+</html>
