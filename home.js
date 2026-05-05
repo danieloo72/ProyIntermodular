@@ -2,11 +2,11 @@ const contenedor = document.querySelector(".contenedor");
 const modal = document.getElementById("modalCoche");
 
 // Variables de estado
-let cochesOriginales = []; // Guardamos los 10 coches aquí
+let cochesOriginales = [];
 let favoritos = JSON.parse(localStorage.getItem("favoritos")) || []; // IDs de favoritos
 let cocheSeleccionadoActual = null;
 let viendoFavoritos = false; // Variable para saber si estamos en la vista de favoritos
-const btnFavoritosTop = document.getElementById("favoritos"); // Referencia al botón superior
+const btnFavoritosTop = document.getElementById("favoritos");
 
 // 1. Cargar y guardar los coches
 async function cargarPrimerosDiezCoches() {
@@ -19,7 +19,6 @@ async function cargarPrimerosDiezCoches() {
         );
 
         const resultados = await Promise.all(promesas);
-        // Filtramos los nulos si algún ID no existe
         cochesOriginales = resultados.filter(c => c !== null);
         
         listarCoches(cochesOriginales);
@@ -42,7 +41,7 @@ function listarCoches(lista) {
         tarjeta.classList.add("tarjeta");
         
         const precio = coche.precioVenta || coche.precio || "Consultar";
-        const imagen = coche.urlImagen || coche.imagen || "img/default.jpg";
+        const imagen = coche.urlImagen || coche.imagen;
 
         tarjeta.innerHTML = `
             <h3>${coche.marca} ${coche.modelo}</h3>
@@ -72,15 +71,14 @@ btnFavoritosTop.addEventListener("click", () => {
     if (viendoFavoritos) {
         // Entramos en modo favoritos
         btnFavoritosTop.innerText = "Salir de Favoritos";
-        btnFavoritosTop.style.backgroundColor = "#ef4444"; // Se vuelve rojo
+        btnFavoritosTop.style.backgroundColor = "#ef4444";
         
-        // CUIDADO: Dependiendo de tu API, el ID puede venir como 'id' o 'idCoche'
         const soloFavoritos = cochesOriginales.filter(c => favoritos.includes(c.id || c.idCoche));
         listarCoches(soloFavoritos);
     } else {
         // Salimos de favoritos, volvemos a la lista general
         btnFavoritosTop.innerText = "Favoritos";
-        btnFavoritosTop.style.backgroundColor = "#7c3aed"; // Vuelve a morado
+        btnFavoritosTop.style.backgroundColor = "#7c3aed";
         
         listarCoches(cochesOriginales);
     }
@@ -90,7 +88,6 @@ btnFavoritosTop.addEventListener("click", () => {
 document.getElementById("resetear").addEventListener("click", () => {
     document.getElementById("buscar").value = "";
     
-    // Restaurar el estado del botón favoritos si estábamos ahí
     viendoFavoritos = false;
     btnFavoritosTop.innerText = "Favoritos";
     btnFavoritosTop.style.backgroundColor = "#7c3aed";
@@ -102,7 +99,6 @@ document.getElementById("resetear").addEventListener("click", () => {
 function abrirModal(coche) {
     cocheSeleccionadoActual = coche;
     
-    // Rellenar campos asegurando que toman el valor correcto (blindado contra undefined)
     const precio = coche.precioVenta || coche.precio || 0;
     const kms = coche.kilometraje || coche.km || 0;
     const anio = coche.anioFabricacion || coche.anio || "N/A";
@@ -136,18 +132,42 @@ function abrirModal(coche) {
     modal.showModal();
 }
 
+function openModal(filtrados) {
+    filtradoCoche = cocheFiltrado;
+    
+    const precio = cocheFiltrado.precioVenta || cocheFiltrado.precio || 0;
+    const kms = cocheFiltrado.kilometraje || cocheFiltrado.km || 0;
+    const anio = cocheFiltrado.anioFabricacion || cocheFiltrado.anio || "N/A";
+
+    document.getElementById("modalFAnio").innerText = `${anio}`;
+    document.getElementById("modalFPrecio").innerText = `${precio}`;
+    document.getElementById("modalFMarca").innerText = `${marca}`;
+    document.getElementById("modalFModelo").innerText = `${modelo}`;
+    document.getElementById("modalFColor").innerText = `${color}`;
+    document.getElementById("modalFCombustible").innerText = `${combustible}`;
+    document.getElementById("modalFTransmision").innerText = `${transmision}`;
+    document.getElementById("modalFKM").innerText = `${km}`;
+    document.getElementById("modalFCiudad").innerText = `${ciudad}`;
+    document.getElementById("modalFEtiqAmb").innerText = `${etiquetaAmbiental}`;
+    document.getElementById("modalFVersion").innerText = `${version}`;
+    document.getElementById("modalFDisponible").innerText = `${disponible}`;
+
+    modal.showModal();
+}
+
+
 // 7. Evento para añadir/quitar favorito dentro del modal
 document.getElementById("btnFavoritoModal").addEventListener("click", () => {
     const id = cocheSeleccionadoActual.id || cocheSeleccionadoActual.idCoche;
     
     if (favoritos.includes(id)) {
-        favoritos = favoritos.filter(favId => favId !== id); // Eliminar
+        favoritos = favoritos.filter(favId => favId !== id);
     } else {
-        favoritos.push(id); // Añadir
+        favoritos.push(id);
     }
     
     localStorage.setItem("favoritos", JSON.stringify(favoritos));
-    abrirModal(cocheSeleccionadoActual); // Refrescar el texto y color del botón del modal
+    abrirModal(cocheSeleccionadoActual);
     
     // Si estamos en la vista de favoritos y quitamos un coche, actualizar la lista de fondo
     if (viendoFavoritos) {
@@ -156,8 +176,6 @@ document.getElementById("btnFavoritoModal").addEventListener("click", () => {
     }
 });
 
-// Inicialización
 cargarPrimerosDiezCoches();
 
-// Evento cerrar modal
 document.getElementById("cerrarModal").addEventListener("click", () => modal.close());
