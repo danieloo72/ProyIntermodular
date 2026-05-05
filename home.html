@@ -29,31 +29,25 @@
 
             <div class="contenedor-filtro">
                 <dialog id="modalFiltro">
-                    <h2 id="modalBusqAvan"></h2>
-                    <p><strong>Año:</strong></p>
-                    <select name="Año" id="modalFAnio"></select>
-                    <p><strong>Precio:</strong></p>
-                    <select name="Precio" id="modalFPrecio"></select>
-                    <p><strong>Marca:</strong></p>
-                    <select name="Marca" id="modalFMarca"></select>
-                    <p><strong>Modelo:</strong></p>
-                    <select name="Modelo" id="modalFModelo"></select>
-                    <p><strong>Color:</strong></p>
-                    <select name="Color" id="modalFColor"></select>
-                    <p><strong>Combustible:</strong></p>
-                    <select name="Combustible" id="modalFCombustible"></select>
-                    <p><strong>Transmisión:</strong></p>
-                    <select name="Transmisión" id="modalFTransmision"></select>
-                    <p><strong>Kilometraje:</strong></p>
-                    <select name="Kilometraje" id="modalFKM"></select>
-                    <p><strong>Ciudad:</strong></p>
-                    <select name="Ciudad" id="modalFCiudad"></select>
-                    <p><strong>Etiqueta Ambiental:</strong></p>
-                    <select name="Etiqueta" id="modalFEtiqAmb"></select>
-                    <p><strong>Version:</strong></p>
-                    <select name="Version" id="modalFVersion"></select>
-                    <p><strong>Disponibilidad:</strong></p>
-                    <select name="Disponible" id="modalFDisponible"></select>
+                    <h2 id="modalBusqAvan">Filtros de Búsqueda</h2>
+                    <div class="filtros-grid">
+                        <p><strong>Marca:</strong> <select id="modalFMarca"><option value="">Todas</option></select></p>
+                        <p><strong>Modelo:</strong> <select id="modalFModelo"><option value="">Todos</option></select></p>
+                        <p><strong>Año:</strong> <select id="modalFAnio"><option value="">Todos</option></select></p>
+                        <p><strong>Precio:</strong> <select id="modalFPrecio"><option value="">Todos</option></select></p>
+                        <p><strong>Color:</strong> <select id="modalFColor"><option value="">Todos</option></select></p>
+                        <p><strong>Combustible:</strong> <select id="modalFCombustible"><option value="">Todos</option></select></p>
+                        <p><strong>Transmisión:</strong> <select id="modalFTransmision"><option value="">Todas</option></select></p>
+                        <p><strong>Kilometraje:</strong> <select id="modalFKM"><option value="">Todos</option></select></p>
+                        <p><strong>Ciudad:</strong> <select id="modalFCiudad"><option value="">Todas</option></select></p>
+                        <p><strong>Etiqueta Ambiental:</strong> <select id="modalFEtiqAmb"><option value="">Todas</option></select></p>
+                        <p><strong>Version:</strong> <select id="modalFVersion"><option value="">Todas</option></select></p>
+                        <p><strong>Disponibilidad:</strong> <select id="modalFDisponible"><option value="">Todas</option></select></p>
+                    </div>
+                    <div class="modal-botones-pie">
+                        <button id="btnAplicarFiltros">Aplicar Filtros</button>
+                        <button id="btnCerrarFiltro">Cerrar</button>
+                    </div>
                 </dialog>
             </div>
         </div>
@@ -100,5 +94,4 @@
     </div>
 
 </body>
-
 </html>
